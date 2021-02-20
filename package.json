@@ -1,0 +1,26 @@
+{
+  "name": "roleman",
+  "version": "1.0.0",
+  "description": "Manage the assignment of your Discord roles",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masl/Roleman.git"
+  },
+  "author": "masl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/masl/Roleman/issues"
+  },
+  "homepage": "https://github.com/masl/Roleman#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "localenv": "^0.2.2",
+    "nodemon": "^2.0.7"
+  }
+}
