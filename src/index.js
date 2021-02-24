@@ -1,10 +1,13 @@
 const Discord = require('discord.js');
 const fs = require('fs');
-require('localenv');
-require('dotenv').config();
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+
+const {
+	BOT_TOKEN,
+	PREFIX
+} = require('./config');
 
 const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
 
@@ -17,11 +20,10 @@ client.once('ready', () => {
     console.log('Bot is ready!');
 });
 
-const prefix = '!';
 client.on('message', message => {
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
+	if (!message.content.startsWith(PREFIX) || message.author.bot) return;
 
-	const args = message.content.slice(prefix.length).trim().split(/ +/);
+	const args = message.content.slice(PREFIX.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
 	const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commadnName));
 
@@ -33,4 +35,4 @@ client.on('message', message => {
 	}
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(BOT_TOKEN);
